@@ -42,3 +42,29 @@ async function searchRecipes(query: string): Promise<Recipe[]> {
     throw error;
   }
 }
+
+async function getRecipeById(id: string): Promise<Recipe | null> {
+  const url = `${BASE_URL}lookup.php?i=${encodeURIComponent(id)}`;
+
+  try {
+    const response: Response = await fetch(url);
+
+    if (!response.ok)
+      throw new Error(`API request failed with status: ${response.status}`);
+
+    const data = (await response.json()) as MealDBResponse;
+
+    return data.meals && data.meals.length !== 0
+      ? toRecipe(data.meals[0])
+      : null;
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(
+        `Failed to fetch recipe with id ${id} with error ${error.message}`,
+      );
+    }
+    throw error;
+  }
+}
+
+export { searchRecipes, getRecipeById };
