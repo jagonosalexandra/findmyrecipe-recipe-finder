@@ -71,7 +71,7 @@ async function getRecipeByFirstLetter(letter: string): Promise<Recipe[]> {
   const url = `${BASE_URL}search.php?f=${encodeURIComponent(letter)}`;
 
   try {
-    const response = await fetch(url);
+    const response: Response = await fetch(url);
 
     if (!response.ok)
       throw new Error(`API request failed with status: ${response.status}`);
@@ -87,4 +87,31 @@ async function getRecipeByFirstLetter(letter: string): Promise<Recipe[]> {
   }
 }
 
-export { searchRecipes, getRecipeById, getRecipeByFirstLetter };
+async function getRandomRecipe(): Promise<Recipe | null> {
+  const url = `${BASE_URL}random.php`;
+
+  try {
+    const response: Response = await fetch(url);
+
+    if (!response.ok)
+      throw new Error(`API request failed with status: ${response.status}`);
+
+    const data = (await response.json()) as MealDBResponse;
+
+    return data.meals && data.meals.length !== 0
+      ? toRecipe(data.meals[0])
+      : null;
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error("Fetch error:", error.message);
+    }
+    throw error;
+  }
+}
+
+export {
+  searchRecipes,
+  getRecipeById,
+  getRecipeByFirstLetter,
+  getRandomRecipe,
+};
