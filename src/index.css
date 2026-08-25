@@ -1,8 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Viga&display=swap");
 @import "tailwindcss";
 
 @theme {
   --color-green: #688e26;
   --color-red-orange: #f44708;
   --color-dark-red: #a10702;
-  --color-yelloe: #faa613;
+  --color-yellow: #faa613;
+
+  --font-heading: "Viga", sans-serif;
+  --font-body: "Roboto Mono", sans-serif;
+}
+
+body {
+  font-size: var(--font-body);
+  font-size: 1.15rem;
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  line-height: 4rem;
+}
+
+.button-white {
+  border-color: white;
+  color: white;
 }
