@@ -14,7 +14,7 @@ function RecipeCard({
   return (
     <Link
       to={`/recipe/${id}`}
-      className="flex flex-col border-4 border-red-orange min-h-96 hover:border-green transition-colors duration-300"
+      className="flex flex-col border-4 border-red-orange min-h-108 w-104 hover:border-green transition-colors duration-300"
     >
       <img
         className="h-64 object-cover object-center"
