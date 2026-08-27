@@ -34,6 +34,12 @@ h2 {
   color: white;
 }
 
+.button-green-fill {
+  border-color: var(--color-green);
+  background-color: var(--color-green);
+  color: #fff;
+}
+
 .section {
   padding: 4rem 6rem;
 }
