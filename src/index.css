@@ -43,3 +43,8 @@ h2 {
 .section {
   padding: 4rem 6rem;
 }
+
+.error-text {
+  text-align: center;
+  color: var(--color-dark-red);
+}
