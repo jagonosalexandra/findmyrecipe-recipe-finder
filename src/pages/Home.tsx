@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import hero from "../assets/hero.png";
+import random from "../assets/random.png";
 import { useSearch } from "../context/SearchContext";
 import Button from "../components/Button";
 import SearchBar from "../components/SearchBar";
@@ -10,12 +11,23 @@ import RecipeCard from "../components/RecipeCard";
 
 function Home() {
   const { search } = useSearch();
-  const { randomRecipes, fetchRandomRecipes, isLoading, error } = useRandom();
+  const {
+    randomRecipes,
+    fetchRandomRecipe,
+    fetchRandomRecipes,
+    isLoading,
+    error,
+  } = useRandom();
   const navigate = useNavigate();
 
   function handleSearch(query: string) {
     search(query);
     navigate("/search");
+  }
+
+  async function handleSurpriseMe() {
+    const recipe = await fetchRandomRecipe();
+    if (recipe) navigate(`/recipe/${recipe.id}`);
   }
 
   const recipesRef = useRef<HTMLDivElement>(null);
@@ -76,7 +88,24 @@ function Home() {
         </div>
       </div>
 
-      <div>Random</div>
+      <div className="section flex flex-col justify-center items-center bg-red-orange text-white">
+        <img className="w-36" src={random} alt="" />
+        <p className="text-5xl text-center mb-6">
+          Haven't decided yet? <br />
+          <span className="text-yellow">Let us surprise you!</span>
+        </p>
+        <p className="w-[50%] text-center mb-24">
+          Feeling adventurous? Click the button and let fate pick your next
+          meal. From quick breakfasts to decadent desserts, your next favorite
+          dish is just one click away.
+        </p>
+
+        <Button
+          label="Surprise me!"
+          variant="white"
+          onClick={handleSurpriseMe}
+        />
+      </div>
     </div>
   );
 }
