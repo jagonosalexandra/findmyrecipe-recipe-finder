@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Recipe } from "../types/recipe";
-import { getRandomRecipe, searchRecipes } from "../api/mealdb";
+import { getRandomRecipe, getRecipeById, searchRecipes } from "../api/mealdb";
 
 export function useSearchRecipes() {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
@@ -85,4 +85,30 @@ export function useRandom() {
     isLoading,
     error,
   };
+}
+
+export function useRecipe() {
+  const [recipe, setRecipe] = useState<Recipe>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function fetchRecipe(id: string) {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const data = await getRecipeById(id);
+      if (data) setRecipe(data);
+    } catch (error) {
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError("Something went wrong. Please try again.");
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  return { recipe, fetchRecipe, isLoading, error };
 }
