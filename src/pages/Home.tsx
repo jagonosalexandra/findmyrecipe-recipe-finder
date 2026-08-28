@@ -33,7 +33,7 @@ function Home() {
   const recipesRef = useRef<HTMLDivElement>(null);
 
   function scrollToRecipes() {
-    recipesRef.current?.scrollIntoView({ behavior: "smooth" });
+    recipesRef.current?.scrollIntoView();
   }
 
   useEffect(() => {

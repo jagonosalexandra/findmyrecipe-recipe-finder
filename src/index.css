@@ -15,6 +15,10 @@
   font-family: var(--font-body);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .heading {
   font-family: var(--font-heading);
   font-size: 3.5rem;
