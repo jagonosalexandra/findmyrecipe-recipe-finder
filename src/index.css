@@ -32,9 +32,22 @@ h2 {
   margin-bottom: 2.25rem;
 }
 
+.button-square {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .button-white {
   border-color: white;
   color: white;
+}
+
+.button-green {
+  border-color: var(--color-green);
+  color: var(--color-green);
 }
 
 .button-green-fill {
