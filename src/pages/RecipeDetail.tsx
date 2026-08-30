@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import YouTube from "react-youtube";
 import { useRecipe } from "../hooks/useRecipes";
@@ -7,9 +7,11 @@ import category from "../assets/icons/category.png";
 import area from "../assets/icons/area.png";
 import country from "../assets/icons/country.png";
 import ingredient from "../assets/icons/ingredient.png";
+import Button from "../components/Button";
 
 function RecipeDetail() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const { recipe, fetchRecipe, isLoading, error } = useRecipe();
   const videoId = recipe?.youtube ? getYouTubeEmbedUrl(recipe.youtube) : null;
 
@@ -55,7 +57,19 @@ function RecipeDetail() {
 
   if (isLoading) return <LoadingSpinner />;
   if (error) return <p className="error-text">{error}</p>;
-  if (!recipe) return <p>Recipe Not Found</p>;
+  if (!recipe)
+    return (
+      <div className="flex flex-col justify-center items-center gap-8 section">
+        <p className="text-8xl text-dark-red font-bold">Recipe Not Found</p>
+        <p>Oops! The recipe you're looking for could not be found.</p>
+
+        <Button
+          label="Go to Home Page"
+          variant="green-fill"
+          onClick={() => navigate("/")}
+        />
+      </div>
+    );
 
   return (
     <div>
