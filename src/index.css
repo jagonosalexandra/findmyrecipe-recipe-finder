@@ -32,13 +32,20 @@ h2 {
   margin-bottom: 2.25rem;
 }
 
-.button-square {
+@utility button-square {
   width: 3rem;
   height: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
+}
+
+@utility button-square-small {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button-white {
@@ -71,8 +78,12 @@ h2 {
   background-color: hsl(82, 58%, 30%);
 }
 
-.section {
+@utility section {
   padding: 4rem 6rem;
+}
+
+@utility section-small {
+  padding: 3rem 2rem;
 }
 
 .error-text {

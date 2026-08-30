@@ -3,7 +3,7 @@ import logo from "../assets/logo.png";
 
 function Navbar() {
   return (
-    <div className="flex justify-between items-center w-full px-24 py-2 top-0 left-0 fixed z-50 bg-white">
+    <div className="flex justify-between items-center w-full px-4 lg:px-24 sticky top-0 z-50 bg-white">
       <NavLink to="/">
         <img className="w-[12em]" src={logo} alt="FindMyRecipe" />
       </NavLink>

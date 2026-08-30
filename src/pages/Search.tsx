@@ -19,7 +19,7 @@ function Search() {
     const currItems = recipes.slice(startIndex, endIndex);
 
     return (
-      <div className="grid grid-cols-3 gap-8 mt-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 xl:gap-8 mt-16">
         {currItems.map((item) => (
           <RecipeCard
             id={item.id}
@@ -57,16 +57,16 @@ function Search() {
         <div className="flex items-center justify-end gap-2.5 mt-8">
           {currPage !== 1 && (
             <button
-              className="button-square button-green border-4 cursor-pointer"
+              className="button-square-small lg:button-square button-green border-2 lg:border-4 cursor-pointer"
               onClick={goToPrevPage}
               disabled={currPage === 1}
             >
-              <img className="w-6" src={prev} alt="Previous page" />
+              <img className="w-4 lg:w-6" src={prev} alt="Previous page" />
             </button>
           )}
           {Array.from({ length: totalPages }, (_, i) => (
             <button
-              className="button-square button-green border-4 cursor-pointer"
+              className="button-square-small lg:button-square button-green border-2 text-sm lg:text-base lg:border-4 cursor-pointer"
               key={i}
               onClick={() => goToSpecificPage(i + 1)}
             >
@@ -75,11 +75,11 @@ function Search() {
           ))}
           {currPage !== totalPages && (
             <button
-              className="button-square button-green border-4 cursor-pointer"
+              className="button-square-small lg:button-square button-green border-2 lg:border-4 cursor-pointer"
               onClick={goToNextPage}
               disabled={currPage === totalPages}
             >
-              <img className="w-6" src={next} alt="Nextpage" />
+              <img className="w-4 lg:w-6" src={next} alt="Nextpage" />
             </button>
           )}
         </div>
@@ -88,7 +88,7 @@ function Search() {
   }
 
   return (
-    <div className="section">
+    <div className="section-small lg:section">
       <SearchBar search={search} />
 
       {isLoading && <LoadingSpinner />}

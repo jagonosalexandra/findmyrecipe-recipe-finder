@@ -14,16 +14,16 @@ function RecipeCard({
   return (
     <Link
       to={`/recipe/${id}`}
-      className="flex flex-col border-4 border-red-orange min-h-108 w-104 hover:border-green transition-colors duration-300"
+      className="flex items-center md:items-start md:flex-col border-4 border-red-orange md:min-h-108 hover:border-green transition-colors duration-300"
     >
       <img
-        className="h-64 object-cover object-center"
+        className="w-[50%] md:w-full md:h-64 object-cover object-center"
         src={thumbnail}
         alt={name}
       />
       <p className="flex flex-col p-6">
         <span className="text-gray-400">{category}</span>
-        <span className="text-2xl font-bold">{name}</span>
+        <span className="text-lg lg:text-2xl font-bold">{name}</span>
       </p>
     </Link>
   );

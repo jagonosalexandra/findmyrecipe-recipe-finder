@@ -18,9 +18,9 @@ function SearchBar({ search }: { search: (query: string) => void }) {
   }
 
   return (
-    <div className="flex gap-6">
+    <div className="flex flex-col lg:flex-row gap-1.5 lg:gap-6">
       <input
-        className="flex-1 px-4 outline-none border-4 border-green font-body w-xl"
+        className="flex-1 px-4 py-1.5 outline-none border-4 border-green font-body lg:w-xl"
         type="text"
         value={query}
         onChange={handleChange}
