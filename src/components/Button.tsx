@@ -9,7 +9,7 @@ function Button({
 }) {
   return (
     <button
-      className={`px-12 py-2 border-4 font-body button-${variant} cursor-pointer`}
+      className={`px-12 py-2 border-4 font-body button-${variant} transition-all duration-300 cursor-pointer`}
       onClick={onClick}
     >
       {label}

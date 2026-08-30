@@ -21,7 +21,7 @@ html {
 
 .heading {
   font-family: var(--font-heading);
-  font-size: 3.5rem;
+  font-size: 4rem;
   line-height: 4rem;
 }
 
@@ -38,6 +38,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 1.5rem;
 }
 
 .button-white {
@@ -45,9 +46,18 @@ h2 {
   color: white;
 }
 
+.button-white:hover {
+  background-color: white;
+  color: var(--color-green);
+}
+
 .button-green {
   border-color: var(--color-green);
   color: var(--color-green);
+}
+
+.button-green:hover {
+  border-color: hsl(82, 58%, 30%);
 }
 
 .button-green-fill {
@@ -56,11 +66,17 @@ h2 {
   color: #fff;
 }
 
+.button-green-fill:hover {
+  border-color: hsl(82, 58%, 30%);
+  background-color: hsl(82, 58%, 30%);
+}
+
 .section {
   padding: 4rem 6rem;
 }
 
 .error-text {
+  padding: 4rem 0;
   text-align: center;
   color: var(--color-dark-red);
 }
