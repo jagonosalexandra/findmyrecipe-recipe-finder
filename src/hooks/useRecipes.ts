@@ -4,12 +4,14 @@ import { getRandomRecipe, getRecipeById, searchRecipes } from "../api/mealdb";
 
 export function useSearchRecipes() {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
+  const [hasSearched, setHasSearched] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
   async function search(query: string) {
     setIsLoading(true);
     setError(null);
+    setHasSearched(true);
     try {
       setRecipes(await searchRecipes(query));
     } catch (error) {
@@ -23,7 +25,7 @@ export function useSearchRecipes() {
     }
   }
 
-  return { recipes, isLoading, error, search };
+  return { recipes, hasSearched, isLoading, error, search };
 }
 
 export function useRandom() {

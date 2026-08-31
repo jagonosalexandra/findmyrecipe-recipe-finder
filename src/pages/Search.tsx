@@ -7,7 +7,7 @@ import prev from "../assets/icons/prev.svg";
 import next from "../assets/icons/next.svg";
 
 function Search() {
-  const { recipes, search, isLoading, error } = useSearch();
+  const { recipes, hasSearched, search, isLoading, error } = useSearch();
   const [currPage, setCurrPage] = useState<number>(1);
   const itemsPerPage: number = 9;
 
@@ -22,6 +22,7 @@ function Search() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 xl:gap-8 mt-16">
         {currItems.map((item) => (
           <RecipeCard
+            key={item.id}
             id={item.id}
             name={item.name}
             thumbnail={item.thumbnail}
@@ -79,7 +80,7 @@ function Search() {
               onClick={goToNextPage}
               disabled={currPage === totalPages}
             >
-              <img className="w-4 lg:w-6" src={next} alt="Nextpage" />
+              <img className="w-4 lg:w-6" src={next} alt="Next page" />
             </button>
           )}
         </div>
@@ -93,7 +94,10 @@ function Search() {
 
       {isLoading && <LoadingSpinner />}
       {error && <p className="error-text">{error}</p>}
-      {!isLoading && !error && recipes.length === 0 && (
+      {!isLoading && !error && !hasSearched && (
+        <p className="text-center py-16">Search for a recipe to get started.</p>
+      )}
+      {!isLoading && !error && hasSearched && recipes.length === 0 && (
         <p className="text-center py-16">
           No recipes found. Try a different search.
         </p>

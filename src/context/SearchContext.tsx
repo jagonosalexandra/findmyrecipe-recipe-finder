@@ -5,6 +5,7 @@ import { useSearchRecipes } from "../hooks/useRecipes";
 
 interface SearchContextType {
   recipes: Recipe[];
+  hasSearched: boolean;
   isLoading: boolean;
   error: string | null;
   search: (query: string) => Promise<void>;
