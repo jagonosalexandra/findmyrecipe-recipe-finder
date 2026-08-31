@@ -9,8 +9,9 @@ function SearchBar({ search }: { search: (query: string) => void }) {
   }
 
   function handleSearch() {
+    if (!query.trim()) return;
+
     search(query);
-    setQuery("");
   }
 
   function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
