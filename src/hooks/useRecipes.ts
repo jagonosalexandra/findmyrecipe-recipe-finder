@@ -30,7 +30,7 @@ export function useSearchRecipes() {
 
 export function useRandom() {
   const [randomRecipes, setRandomRecipes] = useState<Recipe[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   async function fetchOneRandom(): Promise<Recipe | null> {
@@ -91,7 +91,7 @@ export function useRandom() {
 
 export function useRecipe() {
   const [recipe, setRecipe] = useState<Recipe>();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   async function fetchRecipe(id: string) {
