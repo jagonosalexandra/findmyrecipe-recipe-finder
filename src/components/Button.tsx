@@ -4,7 +4,7 @@ function Button({
   onClick,
 }: {
   label: string;
-  variant: string;
+  variant: "white" | "green" | "green-fill";
   onClick: () => void;
 }) {
   return (
