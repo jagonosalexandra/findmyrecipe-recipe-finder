@@ -1,75 +1,46 @@
-# React + TypeScript + Vite
+# FindMyRecipe
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+FindMyRecipe is a recipe discovery web app built with React, TypeScript, and Vite, powered by TheMealDB API. Search for recipes by name, browse detailed step-by-step instructions, or let the "Surprise me!" feature pick a random dish.
 
-Currently, two official plugins are available:
+![FindMyRecipe Home Page](public/og-image.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**[Live Demo](https://findmyrecipe-recipe-finder.vercel.app/)** · **[Figma Design](https://www.figma.com/design/gN9YX2ZG0X9LBF65hY825I/FindMyRecipe)**
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Search by Name** - find recipes instantly with a live search against TheMealDB
+- **Surprise Me!** - get a random recipe pulled from thousands of dishes, with duplicate-free multi-fetch logic for the homepage's featured picks
+- **Detailed Recipe Pages** - ingredients, area/cuisine, step-by-step instructions, and an embedded YouTube tutorial
+- **Pagination** - browse search results 9 at a time with a responsive page control
+- **Typed, End-to-End** - strict TypeScript throughout, including generics for reusable API/hook logic
 
-## Expanding the ESLint configuration
+## Tech / Tools
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React + TypeScript
+- Vite
+- Tailwind CSS (with custom theme tokens and utilities)
+- React Router
+- TheMealDB API
+- Node.js (tooling — ESLint/Prettier via npm)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Setup
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Prerequisites
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Node.js and npm installed.
 
+### Installation
+
+```bash
+git clone git@github.com:jagonosalexandra/findmyrecipe-recipe-finder.git
+cd findmyrecipe-recipe-finder
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Usage
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm run dev
 ```
+
+Then open the local URL shown in your terminal in your browser.
