@@ -33,7 +33,7 @@ function RecipeDetail() {
       let cleanStep = step.trim();
       if (!cleanStep) return;
 
-      cleanStep = cleanStep.replace(/^(step\s*\d+[:.-]?|\d+[:.-]?|•)\s*/i, "");
+      cleanStep = cleanStep.replace(/^(step\s*\d+[:.-]?|\d+[:.)-]?|•)\s*/i, "");
 
       if (cleanStep.length > 2) {
         formattedSteps.push(cleanStep);
@@ -59,9 +59,13 @@ function RecipeDetail() {
   if (error) return <p className="error-text">{error}</p>;
   if (!recipe)
     return (
-      <div className="flex flex-col justify-center items-center gap-8 section">
-        <p className="text-8xl text-dark-red font-bold">Recipe Not Found</p>
-        <p>Oops! The recipe you're looking for could not be found.</p>
+      <div className="flex flex-col justify-center items-center gap-8 section-small lg:section">
+        <p className="text-6xl lg:text-8xl text-center text-dark-red font-bold">
+          Recipe Not Found
+        </p>
+        <p className="mb-24 text-center">
+          Oops! The recipe you're looking for could not be found.
+        </p>
 
         <Button
           label="Go to Home Page"
@@ -73,34 +77,40 @@ function RecipeDetail() {
 
   return (
     <div>
-      <div className="flex items-center gap-12 bg-green">
-        <img src={recipe.thumbnail} alt={recipe.name} />
+      <div className="flex flex-col lg:flex-row items-start lg:items-center lg:gap-12 bg-green">
+        <img
+          src={recipe.thumbnail}
+          alt={recipe.name}
+          className="w-full lg:w-md xl:w-164 aspect-square object-cover lg:rounded-r-2xl shrink-0"
+        />
 
-        <div className="pr-24">
-          <h1 className="heading mb-6 text-yellow">{recipe.name}</h1>
-          <p className="text-lg text-white">
+        <div className="p-8 lg:pr-24">
+          <h1 className="heading-small lg:heading lg:mb-6 text-yellow">
+            {recipe.name}
+          </h1>
+          <p className="text-md lg:text-lg text-white">
             <span className="flex items-center gap-4 my-2">
-              <img src={category} alt="Category" />
+              <img className="w-6 lg:w-8" src={category} alt="Category" />
               {recipe.category}
             </span>
             {recipe.area && (
               <span className="flex items-center gap-4 my-2">
-                <img src={area} alt="Area" />
+                <img className="w-6 lg:w-8" src={area} alt="Area" />
                 {recipe.area}
               </span>
             )}
             <span className="flex items-center gap-4 my-2">
-              <img src={country} alt="Country" />
+              <img className="w-6 lg:w-8" src={country} alt="Country" />
               {recipe.country}
             </span>
           </p>
         </div>
       </div>
 
-      <div className="section">
-        <h2>Ingredients</h2>
+      <div className="section-small lg:section">
+        <h2 className="heading2-small lg:heading2">Ingredients</h2>
 
-        <div className="grid grid-cols-3 gap-4 p-12 bg-green text-white">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-8 lg:p-12 bg-green text-white">
           {recipe.ingredients.map(({ name, measure }, index) => (
             <p className="flex items-center gap-4" key={index}>
               <img className="w-6" src={ingredient} alt="" />
@@ -110,8 +120,8 @@ function RecipeDetail() {
         </div>
       </div>
 
-      <div className="section">
-        <h2>Instructions</h2>
+      <div className="section-small lg:section">
+        <h2 className="heading2-small lg:heading2">Instructions</h2>
 
         <div>
           {parseInstructions(recipe.instructions).map((step, index) => (
@@ -119,7 +129,7 @@ function RecipeDetail() {
               key={index}
               className="mb-10 pb-8 border-b-[3px] border-red-orange"
             >
-              <span className="block mb-2.5 text-2xl font-bold">
+              <span className="block mb-2.5 text-xl lg:text-2xl font-bold">
                 Step {index + 1}
               </span>
               {step}
@@ -129,16 +139,20 @@ function RecipeDetail() {
       </div>
 
       {videoId && (
-        <div className="section bg-red-orange">
-          <h2>Watch Video Tutorial</h2>
-          <YouTube
-            videoId={videoId}
-            opts={{
-              width: "100%",
-              height: "600",
-              playerVars: { autoplay: 0 },
-            }}
-          />
+        <div className="section-small lg:section bg-red-orange">
+          <h2 className="heading2-small lg:heading2">Watch Video Tutorial</h2>
+          <div className="w-full max-w-4xl mx-auto aspect-video">
+            <YouTube
+              videoId={videoId}
+              className="w-full h-full"
+              iframeClassName="w-full h-full"
+              opts={{
+                width: "100%",
+                height: "100%",
+                playerVars: { autoplay: 0 },
+              }}
+            />
+          </div>
         </div>
       )}
     </div>

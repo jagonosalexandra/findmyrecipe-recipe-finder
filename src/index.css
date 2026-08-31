@@ -11,7 +11,7 @@
   --font-body: "Roboto Mono", sans-serif;
 }
 
-* {
+body {
   font-family: var(--font-body);
 }
 
@@ -19,17 +19,30 @@ html {
   scroll-behavior: smooth;
 }
 
-.heading {
+@utility heading {
   font-family: var(--font-heading);
   font-size: 4rem;
   line-height: 4rem;
 }
 
-h2 {
+@utility heading-small {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  line-height: 3rem;
+}
+
+@utility heading2 {
   font-size: 1.75rem;
   font-weight: bold;
   text-align: center;
   margin-bottom: 2.25rem;
+}
+
+@utility heading2-small {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 @utility button-square {
